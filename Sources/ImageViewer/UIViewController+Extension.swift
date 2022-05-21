@@ -14,6 +14,14 @@ extension UIViewController {
         present(imageViewerController: imageViewerController)
     }
     
+    @available(iOS 15.0, *)
+    public func presentImageViewer(url: URL?, placeholder: UIImage) {
+        let imageViewerController = ImageViewerController(image: {
+            AsyncImage(url: url, content: { $0.resizable() }, placeholder: { Image(uiImage: placeholder).resizable() })
+        })
+        present(imageViewerController: imageViewerController)
+    }
+    
     func hostSwiftUIView<Content: View>(_ rootView: Content) {
         let hostingVC = UIHostingController(rootView: rootView)
         addChild(hostingVC)

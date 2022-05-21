@@ -14,7 +14,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapNetworkImageButton(_ sender: UIButton) {
-        presentImageViewer(url: URL(string: "https://picsum.photos/id/870/300/300"), placeholder: { Color.clear })
-        }
+        presentImageViewer(
+            url: URL(string: "https://picsum.photos/id/870/300/300"),
+            placeholder: UIImage(named: "geometric")!
+        )
+    }
 }
 
