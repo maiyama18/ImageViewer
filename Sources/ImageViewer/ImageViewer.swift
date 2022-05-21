@@ -56,6 +56,21 @@ struct ImageViewer<I: View>: View {
                         }
                     }
                 }
+                .overlay(
+                    HStack {
+                        Button(action: {
+                            isPresented = false
+                        }) {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.white)
+                                .font(.body.bold())
+                                .padding(24)
+                        }
+                        
+                        Spacer()
+                    }
+                        .frame(maxHeight: .infinity, alignment: .top)
+                )
             }
         }
     }
