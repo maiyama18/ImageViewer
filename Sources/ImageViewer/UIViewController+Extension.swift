@@ -6,6 +6,11 @@ extension UIViewController {
         present(imageViewerController: imageViewerController)
     }
     
+    public func presentImageViewer(image: UIImage) {
+        let imageViewerController = ImageViewerController(image: { Image(uiImage: image).resizable() })
+        present(imageViewerController: imageViewerController)
+    }
+    
     @available(iOS 15.0, *)
     public func presentImageViewer<P: View>(url: URL?, placeholder: @escaping () -> P) {
         let imageViewerController = ImageViewerController(image: {

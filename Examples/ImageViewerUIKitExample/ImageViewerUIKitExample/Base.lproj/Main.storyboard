@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1xi-mD-km6">
-                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="1xi-mD-km6">
+                                <rect key="frame" x="107" y="236" width="200" height="424"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfX-U2-txj">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -32,6 +32,17 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="didTapNetworkImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oM1-Xw-Jge"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Av9-dh-h6U">
+                                        <rect key="frame" x="0.0" y="224" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="B78-DO-4PT"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="geometric"/>
+                                        <connections>
+                                            <action selector="didTapUIImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4P-k8-uzS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -54,6 +65,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="geometric" width="200" height="200"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
