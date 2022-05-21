@@ -33,7 +33,7 @@ class ImageViewerViewModel: NSObject, ObservableObject {
     }
     
     func onOffsetInitialized(_ value: CGFloat) {
-        
+        initialOffsetY = value
     }
     
     func onOffsetChanged(_ value: CGFloat) {
