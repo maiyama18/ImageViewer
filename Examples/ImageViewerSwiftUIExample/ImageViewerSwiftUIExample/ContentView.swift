@@ -24,7 +24,7 @@ struct ContentView: View {
             }
         }
         .imageViewer(isPresented: $isImagePresented, image: image)
-        .imageViewer(isPresented: $isAsyncImagePresented, url: URL(string: "https://picsum.photos/id/870/300/300"))
+        .imageViewer(isPresented: $isAsyncImagePresented, url: URL(string: "https://picsum.photos/id/870/300/300"), placeholder: { Color.gray.opacity(0.25) })
     }
     
     private var image: some View {

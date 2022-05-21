@@ -6,8 +6,8 @@ extension View {
     }
     
     @available(iOS 15.0, *)
-    public func imageViewer(isPresented: Binding<Bool>, url: URL?) -> some View {
-        let image = AsyncImage(url: url, content: { $0.resizable() }, placeholder: { Color.clear })
+    public func imageViewer<P: View>(isPresented: Binding<Bool>, url: URL?, placeholder: @escaping () -> P) -> some View {
+        let image = AsyncImage(url: url, content: { $0.resizable() }, placeholder: placeholder)
         return modifier(ImageViewerModifier(isPresented: isPresented, image: image))
     }
 }
