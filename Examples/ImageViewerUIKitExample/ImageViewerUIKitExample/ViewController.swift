@@ -5,15 +5,16 @@
 //  Created by maiyama on 2022/05/21.
 //
 
-import UIKit
+import SwiftUI
+import ImageViewer
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func didTapNetworkImageButton(_ sender: UIButton) {
+        presentImageViewer(url: URL(string: "https://picsum.photos/id/870/300/300"), placeholder: { Color.clear })
+        }
 }
 
