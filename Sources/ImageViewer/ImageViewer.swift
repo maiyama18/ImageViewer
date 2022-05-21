@@ -1,5 +1,70 @@
-public struct ImageViewer {
-    public private(set) var text = "Hello, ImageViewer!"
+import SwiftUI
 
-    public init() {}
+struct ImageViewer<I: View>: View {
+    @Binding var isPresented: Bool
+    var image: I
+    
+    @StateObject private var viewModel: ImageViewerViewModel = .init()
+    
+    private let scrollViewCoordinateSpace = "ScrollViewCoordinateSpace"
+    
+    var body: some View {
+        Group {
+            if isPresented {
+                ZStack {
+                    Color.black
+                        .opacity(viewModel.backgroundOpacity)
+                        .ignoresSafeArea()
+                    
+                    ScrollView([.horizontal, .vertical], showsIndicators: false) {
+                        image
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: UIScreen.main.bounds.size.width * viewModel.imageScale)
+                            .gesture(
+                                MagnificationGesture()
+                                    .onChanged { value in
+                                        viewModel.onMagnificationChanged(value)
+                                    }
+                                    .onEnded { _ in
+                                        viewModel.onMagnificationEnded()
+                                    }
+                            )
+                            .overlay(
+                                Rectangle()
+                                    .fill(.clear)
+                                    .background(
+                                        GeometryReader { proxy in
+                                            let offsetY = proxy.frame(in: .named(scrollViewCoordinateSpace)).origin.y + 0.5 * proxy.size.height
+                                            Color.clear
+                                                .preference(key: ViewOffsetYKey.self, value: offsetY)
+                                                .onAppear {
+                                                    viewModel.onOffsetInitialized(offsetY)
+                                                }
+                                        }
+                                    )
+                            )
+                    }
+                    .onPreferenceChange(ViewOffsetYKey.self) {
+                        viewModel.onOffsetChanged($0)
+                    }
+                    .coordinateSpace(name: scrollViewCoordinateSpace)
+                    .onAppear { viewModel.onAppeared() }
+                    .onDisappear { viewModel.onDisappeared() }
+                    .onReceive(viewModel.close) {
+                        withAnimation(.easeInOut(duration: 0.2).delay(0.1)) {
+                            isPresented = false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct ViewOffsetYKey: PreferenceKey {
+    typealias Value = CGFloat
+    static var defaultValue = CGFloat.zero
+    static func reduce(value: inout Value, nextValue: () -> Value) {
+        value = nextValue()
+    }
 }

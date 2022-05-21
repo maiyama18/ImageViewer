@@ -3,7 +3,7 @@ import ImageViewer
 
 struct ContentView: View {
     var body: some View {
-        Text(ImageViewer().text)
+        Text("Hello, world!")
             .padding()
     }
 }
