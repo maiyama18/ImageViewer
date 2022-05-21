@@ -67,9 +67,8 @@ class ImageViewerViewModel: NSObject, ObservableObject {
             
             let v = recognizer.velocity(in: rootViewController()?.view)
             if abs(offsetY) > offsetYThreshold || abs(v.y) > 1000 {
-                
-                isClosing = true
                 withAnimation(.linear(duration: 0.2)) {
+                    isClosing = true
                     imageScale = 0
                 }
                 closeRelay.send(())
