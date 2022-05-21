@@ -52,20 +52,12 @@ class ImageViewerViewModel: NSObject, ObservableObject {
         imagePreviousScale = imageScale
     }
     
-    private func rootViewController() -> UIViewController? {
-        guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let rootVC = screen.windows.first?.rootViewController else {
-            return nil
-        }
-        return rootVC
-    }
-    
     @objc
     private func onGestureChange(recognizer: UIPanGestureRecognizer){
         if recognizer.state == .cancelled || recognizer.state == .ended {
             guard imageScale == 1 else { return }
             
-            let v = recognizer.velocity(in: rootViewController()?.view)
+            let v = recognizer.velocity(in: UIApplication.topViewController()?.view)
             if abs(offsetY) > offsetYThreshold || abs(v.y) > 1000 {
                 withAnimation(.linear(duration: 0.2)) {
                     isClosing = true
@@ -84,13 +76,13 @@ class ImageViewerViewModel: NSObject, ObservableObject {
     private func addPanGestureRecognizer() {
         let recognizer = UIPanGestureRecognizer(target: self, action: #selector(onGestureChange(recognizer:)))
         recognizer.delegate = self
-        rootViewController()?.view.addGestureRecognizer(recognizer)
+        UIApplication.topViewController()?.view.addGestureRecognizer(recognizer)
         
         self.panGestureRecognizer = recognizer
     }
     
     private func removePanGestureRecognizer() {
-        rootViewController()?.view.gestureRecognizers?.removeAll(where: { $0 == self.panGestureRecognizer })
+        UIApplication.topViewController()?.view.gestureRecognizers?.removeAll(where: { $0 == self.panGestureRecognizer })
     }
 }
 

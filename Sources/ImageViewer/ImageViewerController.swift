@@ -16,6 +16,18 @@ public final class ImageViewerController<I: View>: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        hostSwiftUIView(ImageViewer(isPresented: .constant(true), image: image))
+        hostSwiftUIView(
+            ImageViewer(
+                isPresented: .init(
+                    get: { true },
+                    set: { [weak self] isPresented in
+                        if !isPresented {
+                            self?.dismiss(animated: true)
+                        }
+                    }
+                ),
+                image: image
+            )
+        )
     }
 }
