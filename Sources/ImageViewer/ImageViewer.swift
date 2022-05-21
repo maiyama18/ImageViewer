@@ -1,6 +1,5 @@
 public struct ImageViewer {
-    public private(set) var text = "Hello, World!"
+    public private(set) var text = "Hello, ImageViewer!"
 
-    public init() {
-    }
+    public init() {}
 }
