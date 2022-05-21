@@ -7,70 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3846FCA82838774100B45F36 /* ImageViewerSwiftUIExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FCA72838774100B45F36 /* ImageViewerSwiftUIExampleApp.swift */; };
-		3846FCAA2838774100B45F36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FCA92838774100B45F36 /* ContentView.swift */; };
-		3846FCAC2838774200B45F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3846FCAB2838774200B45F36 /* Assets.xcassets */; };
-		3846FCAF2838774200B45F36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3846FCAE2838774200B45F36 /* Preview Assets.xcassets */; };
-		3846FD032838EF6E00B45F36 /* ImageViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 3846FD022838EF6E00B45F36 /* ImageViewer */; };
+		3846FCE02838EE8500B45F36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FCDF2838EE8500B45F36 /* AppDelegate.swift */; };
+		3846FCE22838EE8500B45F36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FCE12838EE8500B45F36 /* SceneDelegate.swift */; };
+		3846FCE42838EE8500B45F36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FCE32838EE8500B45F36 /* ViewController.swift */; };
+		3846FCE72838EE8500B45F36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3846FCE52838EE8500B45F36 /* Main.storyboard */; };
+		3846FCE92838EE8600B45F36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3846FCE82838EE8600B45F36 /* Assets.xcassets */; };
+		3846FCEC2838EE8600B45F36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3846FCEA2838EE8600B45F36 /* LaunchScreen.storyboard */; };
+		3846FD062838EF7900B45F36 /* ImageViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 3846FD052838EF7900B45F36 /* ImageViewer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3846FCA42838774100B45F36 /* ImageViewerSwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageViewerSwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3846FCA72838774100B45F36 /* ImageViewerSwiftUIExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerSwiftUIExampleApp.swift; sourceTree = "<group>"; };
-		3846FCA92838774100B45F36 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		3846FCAB2838774200B45F36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3846FCAE2838774200B45F36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3846FCDC2838EE8500B45F36 /* ImageViewerUIKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageViewerUIKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3846FCDF2838EE8500B45F36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3846FCE12838EE8500B45F36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3846FCE32838EE8500B45F36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3846FCE62838EE8500B45F36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3846FCE82838EE8600B45F36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3846FCEB2838EE8600B45F36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3846FCED2838EE8600B45F36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3846FCA12838774100B45F36 /* Frameworks */ = {
+		3846FCD92838EE8500B45F36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3846FD032838EF6E00B45F36 /* ImageViewer in Frameworks */,
+				3846FD062838EF7900B45F36 /* ImageViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3846FC9B2838774100B45F36 = {
+		3846FCD32838EE8500B45F36 = {
 			isa = PBXGroup;
 			children = (
-				3846FCA62838774100B45F36 /* ImageViewerSwiftUIExample */,
-				3846FCA52838774100B45F36 /* Products */,
-				3846FCB6283877EB00B45F36 /* Frameworks */,
+				3846FCDE2838EE8500B45F36 /* ImageViewerUIKitExample */,
+				3846FCDD2838EE8500B45F36 /* Products */,
+				3846FD042838EF7900B45F36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		3846FCA52838774100B45F36 /* Products */ = {
+		3846FCDD2838EE8500B45F36 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3846FCA42838774100B45F36 /* ImageViewerSwiftUIExample.app */,
+				3846FCDC2838EE8500B45F36 /* ImageViewerUIKitExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3846FCA62838774100B45F36 /* ImageViewerSwiftUIExample */ = {
+		3846FCDE2838EE8500B45F36 /* ImageViewerUIKitExample */ = {
 			isa = PBXGroup;
 			children = (
-				3846FCA72838774100B45F36 /* ImageViewerSwiftUIExampleApp.swift */,
-				3846FCA92838774100B45F36 /* ContentView.swift */,
-				3846FCAB2838774200B45F36 /* Assets.xcassets */,
-				3846FCAD2838774200B45F36 /* Preview Content */,
+				3846FCDF2838EE8500B45F36 /* AppDelegate.swift */,
+				3846FCE12838EE8500B45F36 /* SceneDelegate.swift */,
+				3846FCE32838EE8500B45F36 /* ViewController.swift */,
+				3846FCE52838EE8500B45F36 /* Main.storyboard */,
+				3846FCE82838EE8600B45F36 /* Assets.xcassets */,
+				3846FCEA2838EE8600B45F36 /* LaunchScreen.storyboard */,
+				3846FCED2838EE8600B45F36 /* Info.plist */,
 			);
-			path = ImageViewerSwiftUIExample;
+			path = ImageViewerUIKitExample;
 			sourceTree = "<group>";
 		};
-		3846FCAD2838774200B45F36 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				3846FCAE2838774200B45F36 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		3846FCB6283877EB00B45F36 /* Frameworks */ = {
+		3846FD042838EF7900B45F36 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -80,42 +80,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3846FCA32838774100B45F36 /* ImageViewerSwiftUIExample */ = {
+		3846FCDB2838EE8500B45F36 /* ImageViewerUIKitExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3846FCB22838774200B45F36 /* Build configuration list for PBXNativeTarget "ImageViewerSwiftUIExample" */;
+			buildConfigurationList = 3846FCF02838EE8600B45F36 /* Build configuration list for PBXNativeTarget "ImageViewerUIKitExample" */;
 			buildPhases = (
-				3846FCA02838774100B45F36 /* Sources */,
-				3846FCA12838774100B45F36 /* Frameworks */,
-				3846FCA22838774100B45F36 /* Resources */,
+				3846FCD82838EE8500B45F36 /* Sources */,
+				3846FCD92838EE8500B45F36 /* Frameworks */,
+				3846FCDA2838EE8500B45F36 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ImageViewerSwiftUIExample;
+			name = ImageViewerUIKitExample;
 			packageProductDependencies = (
-				3846FD022838EF6E00B45F36 /* ImageViewer */,
+				3846FD052838EF7900B45F36 /* ImageViewer */,
 			);
-			productName = ImageViewerSwiftUIExample;
-			productReference = 3846FCA42838774100B45F36 /* ImageViewerSwiftUIExample.app */;
+			productName = ImageViewerUIKitExample;
+			productReference = 3846FCDC2838EE8500B45F36 /* ImageViewerUIKitExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		3846FC9C2838774100B45F36 /* Project object */ = {
+		3846FCD42838EE8500B45F36 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					3846FCA32838774100B45F36 = {
+					3846FCDB2838EE8500B45F36 = {
 						CreatedOnToolsVersion = 13.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 3846FC9F2838774100B45F36 /* Build configuration list for PBXProject "ImageViewerSwiftUIExample" */;
+			buildConfigurationList = 3846FCD72838EE8500B45F36 /* Build configuration list for PBXProject "ImageViewerUIKitExample" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,42 +123,63 @@
 				en,
 				Base,
 			);
-			mainGroup = 3846FC9B2838774100B45F36;
-			productRefGroup = 3846FCA52838774100B45F36 /* Products */;
+			mainGroup = 3846FCD32838EE8500B45F36;
+			productRefGroup = 3846FCDD2838EE8500B45F36 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3846FCA32838774100B45F36 /* ImageViewerSwiftUIExample */,
+				3846FCDB2838EE8500B45F36 /* ImageViewerUIKitExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3846FCA22838774100B45F36 /* Resources */ = {
+		3846FCDA2838EE8500B45F36 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3846FCAF2838774200B45F36 /* Preview Assets.xcassets in Resources */,
-				3846FCAC2838774200B45F36 /* Assets.xcassets in Resources */,
+				3846FCEC2838EE8600B45F36 /* LaunchScreen.storyboard in Resources */,
+				3846FCE92838EE8600B45F36 /* Assets.xcassets in Resources */,
+				3846FCE72838EE8500B45F36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3846FCA02838774100B45F36 /* Sources */ = {
+		3846FCD82838EE8500B45F36 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3846FCAA2838774100B45F36 /* ContentView.swift in Sources */,
-				3846FCA82838774100B45F36 /* ImageViewerSwiftUIExampleApp.swift in Sources */,
+				3846FCE42838EE8500B45F36 /* ViewController.swift in Sources */,
+				3846FCE02838EE8500B45F36 /* AppDelegate.swift in Sources */,
+				3846FCE22838EE8500B45F36 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		3846FCE52838EE8500B45F36 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3846FCE62838EE8500B45F36 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3846FCEA2838EE8600B45F36 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3846FCEB2838EE8600B45F36 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		3846FCB02838774200B45F36 /* Debug */ = {
+		3846FCEE2838EE8600B45F36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -218,7 +239,7 @@
 			};
 			name = Debug;
 		};
-		3846FCB12838774200B45F36 /* Release */ = {
+		3846FCEF2838EE8600B45F36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -272,62 +293,54 @@
 			};
 			name = Release;
 		};
-		3846FCB32838774200B45F36 /* Debug */ = {
+		3846FCF12838EE8600B45F36 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ImageViewerSwiftUIExample/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = ImageViewerUIKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.muijp.ImageViewerSwiftUIExample;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muijp.ImageViewerUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		3846FCB42838774200B45F36 /* Release */ = {
+		3846FCF22838EE8600B45F36 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ImageViewerSwiftUIExample/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = ImageViewerUIKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.muijp.ImageViewerSwiftUIExample;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.muijp.ImageViewerUIKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -337,20 +350,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3846FC9F2838774100B45F36 /* Build configuration list for PBXProject "ImageViewerSwiftUIExample" */ = {
+		3846FCD72838EE8500B45F36 /* Build configuration list for PBXProject "ImageViewerUIKitExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3846FCB02838774200B45F36 /* Debug */,
-				3846FCB12838774200B45F36 /* Release */,
+				3846FCEE2838EE8600B45F36 /* Debug */,
+				3846FCEF2838EE8600B45F36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3846FCB22838774200B45F36 /* Build configuration list for PBXNativeTarget "ImageViewerSwiftUIExample" */ = {
+		3846FCF02838EE8600B45F36 /* Build configuration list for PBXNativeTarget "ImageViewerUIKitExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3846FCB32838774200B45F36 /* Debug */,
-				3846FCB42838774200B45F36 /* Release */,
+				3846FCF12838EE8600B45F36 /* Debug */,
+				3846FCF22838EE8600B45F36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -358,11 +371,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3846FD022838EF6E00B45F36 /* ImageViewer */ = {
+		3846FD052838EF7900B45F36 /* ImageViewer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ImageViewer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 3846FC9C2838774100B45F36 /* Project object */;
+	rootObject = 3846FCD42838EE8500B45F36 /* Project object */;
 }
