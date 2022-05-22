@@ -43,8 +43,6 @@ final class ViewController: UIViewController {
 
 ### From SwiftUI
 
-**The use from SwiftUI is currently unstable and sometimes not working correctly.**
-
 [Example project](https://github.com/maiyama18/ImageViewer/tree/main/Examples/ImageViewerSwiftUIExample)
 
 ```swift
