@@ -19,11 +19,13 @@ https://github.com/maiyama18/ImageViewer.git
 [Example project](https://github.com/maiyama18/ImageViewer/tree/main/Examples/ImageViewerSwiftUIExample/ImageViewerSwiftUIExample)
 
 ```swift
+import ImageViewer
+
 final class ViewController: UIViewController {
     @IBAction func didTapNetworkImageButton(_ sender: UIButton) {
         // network image
         presentImageViewer(
-            url: URL(string: "https://picsum.photos/id/870/300/300"),
+            url: URL(string: "https://url/to/network/image"),
             placeholder: { Color.gray }
         )
     }
@@ -31,7 +33,7 @@ final class ViewController: UIViewController {
     @IBAction func didTapUIImageButton(_ sender: UIButton) {
         // asset image
         presentImageViewer(
-            image: UIImage(named: "geometric")!
+            image: UIImage(named: "my_asset")!
         )
     }
 }
@@ -59,7 +61,7 @@ struct ContentView: View {
             
             // network image
             AsyncImage(
-                url: URL(string: "https://picsum.photos/id/870/300/300"),
+                url: URL(string: "https://url/to/network/image"),
                 content: { $0.resizable() },
                 placeholder: { Color.gray.opacity(0.25) }
             )
@@ -71,7 +73,7 @@ struct ContentView: View {
         .imageViewer(isPresented: $isSystemImagePresented, image: image)
         .imageViewer(
             isPresented: $isNetworkImagePresented,
-            url: URL(string: "https://picsum.photos/id/870/300/300"),
+            url: URL(string: "https://url/to/network/image"),
             placeholder: { Color.gray.opacity(0.25) }
         )
     }
