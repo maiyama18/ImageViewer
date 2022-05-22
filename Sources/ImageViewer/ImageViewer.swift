@@ -24,6 +24,7 @@ struct ImageViewer<I: View>: View {
                         }
                 }
                 .overlay(topButtonsOverlay)
+                .transition(.opacity.animation(.easeInOut(duration: 0.2)))
             }
         }
     }
