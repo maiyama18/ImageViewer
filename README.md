@@ -1,6 +1,6 @@
 # ImageViewer
 
-**This package is under developing and currently not production ready. It has problems of bad performance and crashes.**
+:warning: **This package is under developing and currently not production ready. It has problems of crashes and bad performance.**
 
 Yet another simple image viewer for iOS Applications, that is available for both UIKit and SwiftUI.
 
