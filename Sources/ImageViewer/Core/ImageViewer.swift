@@ -17,6 +17,19 @@ struct ImageViewer: View {
                         }
                     )
                         .ignoresSafeArea()
+                    
+                    HStack {
+                        Button(action: {
+                            isPresented = false
+                        }) {
+                            Image(systemName: "xmark")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                        
+                        Spacer()
+                    }
                 }
             }
         }
