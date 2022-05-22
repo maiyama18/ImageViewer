@@ -1,10 +1,12 @@
 import SwiftUI
 
 public final class ImageViewerController: UIViewController {
-    private let dataSource: ImageDataSource
+    private let dataSources: [ImageDataSource]
+    private let initialIndex: Int
     
-    public init(dataSource: ImageDataSource) {
-        self.dataSource = dataSource
+    public init(dataSources: [ImageDataSource], initialIndex: Int) {
+        self.dataSources = dataSources
+        self.initialIndex = initialIndex
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,7 +28,8 @@ public final class ImageViewerController: UIViewController {
                         }
                     }
                 ),
-                dataSource: dataSource
+                dataSources: dataSources,
+                initialIndex: initialIndex
             )
         )
     }

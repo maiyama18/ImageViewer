@@ -39,13 +39,16 @@ class ViewController: UIViewController {
     
     @objc func didTapAssetImage(_ sender: UITapGestureRecognizer) {
         presentImageViewer(
-            dataSource: .uiImage(UIImage(named: "asakusa")!)
+            dataSources: [.uiImage(UIImage(named: "asakusa")!)]
         )
     }
     
     @objc func didTapNetworkImage(_ sender: UITapGestureRecognizer) {
         presentImageViewer(
-            dataSource: .url(URL(string: "https://picsum.photos/id/870/300/300"))
+            dataSources: [
+                .url(URL(string: "https://picsum.photos/id/870/300/300")),
+                .url(URL(string: "https://picsum.photos/id/871/300/300"))
+            ]
         )
     }
 }

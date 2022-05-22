@@ -1,8 +1,8 @@
 import SwiftUI
 
 extension UIViewController {
-    public func presentImageViewer(dataSource: ImageDataSource) {
-        let imageViewerController = ImageViewerController(dataSource: dataSource)
+    public func presentImageViewer(dataSources: [ImageDataSource], initialIndex: Int = 0) {
+        let imageViewerController = ImageViewerController(dataSources: dataSources, initialIndex: initialIndex)
         
         imageViewerController.view.backgroundColor = .clear
         imageViewerController.modalTransitionStyle = .crossDissolve

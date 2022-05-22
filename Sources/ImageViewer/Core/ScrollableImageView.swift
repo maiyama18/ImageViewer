@@ -1,13 +1,27 @@
 import SwiftUI
+import Combine
 
 struct ScrollableImageView: UIViewRepresentable {
     var dataSource: ImageDataSource
     var onCloseConditionSatisfied: () -> Void
+    var disappeared: AnyPublisher<Void, Never>
+    
+    @State var scrollView: UIScrollView?
 
     func makeUIView(context: Context) -> UIScrollView {
-        let scrollView = UIScrollView()
-        
+        let scrollView = context.coordinator.scrollView
         scrollView.delegate = context.coordinator
+
+        let imageView = context.coordinator.imageView
+        imageView.frame = scrollView.bounds
+        
+        scrollView.addSubview(imageView)
+        
+        return scrollView
+    }
+
+    func makeCoordinator() -> Coordinator {
+        let scrollView = UIScrollView()
         
         scrollView.backgroundColor = .black
         scrollView.maximumZoomScale = 12
@@ -18,14 +32,7 @@ struct ScrollableImageView: UIViewRepresentable {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
-
-        let imageView = context.coordinator.imageView
-        imageView.frame = scrollView.bounds
-        scrollView.addSubview(imageView)
-        return scrollView
-    }
-
-    func makeCoordinator() -> Coordinator {
+        
         let imageView = UIImageView()
         switch dataSource {
         case .url(let url):
@@ -46,18 +53,30 @@ struct ScrollableImageView: UIViewRepresentable {
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        return Coordinator(imageView: imageView, onCloseConditionSatisfied: onCloseConditionSatisfied)
+        
+        return Coordinator(scrollView: scrollView, imageView: imageView, disappeared: disappeared, onCloseConditionSatisfied: onCloseConditionSatisfied)
     }
 
     func updateUIView(_: UIScrollView, context _: Context) {}
 
     class Coordinator: NSObject, UIScrollViewDelegate {
+        var scrollView: UIScrollView
         var imageView: UIImageView
         var onCloseConditionSatisfied: () -> Void
+    
+        private var cancellables: [AnyCancellable] = []
 
-        init(imageView: UIImageView, onCloseConditionSatisfied: @escaping () -> Void) {
+        init(scrollView: UIScrollView, imageView: UIImageView, disappeared: AnyPublisher<Void, Never>, onCloseConditionSatisfied: @escaping () -> Void) {
+            self.scrollView = scrollView
             self.imageView = imageView
             self.onCloseConditionSatisfied = onCloseConditionSatisfied
+            
+            disappeared
+                .receive(on: DispatchQueue.main)
+                .sink {
+                    scrollView.zoomScale = 1
+                }
+                .store(in: &cancellables)
         }
 
         func viewForZooming(in _: UIScrollView) -> UIView? {

@@ -1,27 +1,48 @@
 import SwiftUI
-
-extension UIImage: Identifiable {}
+import Combine
 
 struct ImageViewer: View {
     @Binding var isPresented: Bool
-    var dataSource: ImageDataSource
+    var dataSources: [ImageDataSource]
     
+    init(isPresented: Binding<Bool>, dataSources: [ImageDataSource], initialIndex: Int) {
+        self._isPresented = isPresented
+        self.dataSources = dataSources
+        _currentDataSourceID = .init(initialValue: dataSources[initialIndex].id)
+    }
+    
+    @State private var currentDataSourceID: String
     @State private var isShareViewPresented: Bool = false
     @State private var shareItems: [Any] = []
+    
+    private let disappearedRelay: PassthroughSubject<Void, Never> = .init()
     
     var body: some View {
         Group {
             if isPresented {
                 ZStack(alignment: .top) {
-                    ScrollableImageView(
-                        dataSource: dataSource,
-                        onCloseConditionSatisfied: {
-                            withAnimation(.linear(duration: 0.5).delay(0.1)) {
-                                isPresented = false
+                    VStack {
+                        TabView(selection: $currentDataSourceID) {
+                            ForEach(dataSources) { dataSource in
+                                ScrollableImageView(
+                                    dataSource: dataSource,
+                                    onCloseConditionSatisfied: {
+                                        withAnimation(.linear(duration: 0.5).delay(0.1)) {
+                                            isPresented = false
+                                        }
+                                    },
+                                    disappeared: disappearedRelay.eraseToAnyPublisher()
+                                )
+                                .tag(dataSource.id)
+                                .onDisappear {
+                                    disappearedRelay.send(())
+                                }
                             }
                         }
-                    )
-                        .ignoresSafeArea()
+                        .tabViewStyle(.page(indexDisplayMode: .automatic))
+                    }
+                    .background(Color.black)
+                    .ignoresSafeArea()
                     
                     HStack {
                         Button(action: {
@@ -36,6 +57,7 @@ struct ImageViewer: View {
                         Spacer()
                             
                         Button(action: {
+                            guard let dataSource = dataSources.first(where: { $0.id == currentDataSourceID }) else { return }
                             switch dataSource {
                             case .url(let url):
                                 guard let url = url else { return }
