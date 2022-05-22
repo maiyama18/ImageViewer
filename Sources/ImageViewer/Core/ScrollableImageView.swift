@@ -6,7 +6,9 @@ struct ScrollableImageView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UIScrollView {
         let scrollView = UIScrollView()
+        
         scrollView.delegate = context.coordinator
+        
         scrollView.backgroundColor = .black
         scrollView.maximumZoomScale = 12
         scrollView.minimumZoomScale = 1
@@ -27,8 +29,16 @@ struct ScrollableImageView: UIViewRepresentable {
         let imageView = UIImageView()
         switch dataSource {
         case .url(let url):
-            if let url = url, let data = try? Data(contentsOf: url) {
-                imageView.image = UIImage(data: data)
+            if let url = url {
+                URLSession.shared.dataTask(with: url) { data, _, error in
+                    if let data = data {
+                        DispatchQueue.main.async {
+                            imageView.image = UIImage(data: data)
+                        }
+                    } else {
+                        print(error ?? "unknown error")
+                    }
+                }.resume()
             }
         case .uiImage(let uIImage):
             imageView.image = uIImage
@@ -55,7 +65,22 @@ struct ScrollableImageView: UIViewRepresentable {
         }
 
         func scrollViewDidZoom(_: UIScrollView) {
-            centerImage()
+            let boundsSize = imageView.bounds.size
+            var frame = imageView.frame
+            
+            if frame.size.width < boundsSize.width {
+                frame.origin.x = (boundsSize.width - frame.size.width) / 2
+            } else {
+                frame.origin.x = 0
+            }
+            
+            if frame.size.height < boundsSize.height {
+                frame.origin.y = (boundsSize.height - frame.size.height) / 2
+            } else {
+                frame.origin.y = 0
+            }
+
+            imageView.frame = frame
         }
         
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -68,34 +93,29 @@ struct ScrollableImageView: UIViewRepresentable {
         func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
             guard scrollView.zoomScale == 1 else { return }
             
-            let scrollOffset = abs(scrollView.contentOffset.y)
-            let velocity = abs(scrollView.panGestureRecognizer.velocity(in: scrollView).y)
+            let scrollOffset = scrollView.contentOffset.y
+            let velocity = scrollView.panGestureRecognizer.velocity(in: scrollView).y
             
-            if scrollOffset > 150 || velocity > 1000 {
-                UIView.animate(withDuration: 0.2) {
-                    self.imageView.bounds = .init(x: 0, y: 0, width: 10, height: 10)
+            guard abs(velocity) < 1000 else {
+                // close by velocity
+                UIView.animate(withDuration: 0.3) {
+                    self.imageView.frame.origin.y += velocity * 0.5
+                    self.imageView.alpha = 0
                 }
                 onCloseConditionSatisfied()
+                return
             }
-        }
-
-        func centerImage() {
-            let boundsSize = imageView.bounds.size
-            var frameToCenter = imageView.frame
-
-            if frameToCenter.size.width < boundsSize.width {
-                frameToCenter.origin.x = (boundsSize.width - frameToCenter.size.width) / 2
-            } else {
-                frameToCenter.origin.x = 0
+            
+            guard abs(scrollOffset) < 120 else {
+                // close by offset
+                UIView.animate(withDuration: 0.3) {
+                    self.imageView.alpha = 0
+                }
+                onCloseConditionSatisfied()
+                return
             }
-
-            if frameToCenter.size.height < boundsSize.height {
-                frameToCenter.origin.y = (boundsSize.height - frameToCenter.size.height) / 2
-            } else {
-                frameToCenter.origin.y = 0
-            }
-
-            imageView.frame = frameToCenter
+            
+            return
         }
     }
 }
