@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct ImageViewerModifier<I: View>: ViewModifier {
+struct ImageViewerModifier: ViewModifier {
     @Binding var isPresented: Bool
-    var image: I
+    var dataSource: ImageDataSource
     
     func body(content: Content) -> some View {
         ZStack {
             content
             
-            ImageViewer(isPresented: $isPresented, image: image)
+            ImageViewer(isPresented: $isPresented, dataSource: dataSource)
         }
     }
 }

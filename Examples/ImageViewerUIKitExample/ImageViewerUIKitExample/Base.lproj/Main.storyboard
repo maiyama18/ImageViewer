@@ -19,32 +19,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="1xi-mD-km6">
                                 <rect key="frame" x="107" y="236" width="200" height="424"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EfX-U2-txj">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asakusa" translatesAutoresizingMaskIntoConstraints="NO" id="JZD-a7-hBH">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="I5f-SK-Lg6"/>
+                                            <constraint firstAttribute="height" constant="200" id="mNj-Rh-IVZ"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="NetworkImage">
-                                            <backgroundConfiguration key="background">
-                                                <color key="strokeColor" systemColor="linkColor"/>
-                                            </backgroundConfiguration>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="didTapNetworkImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oM1-Xw-Jge"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Av9-dh-h6U">
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B3A-s0-8NC">
                                         <rect key="frame" x="0.0" y="224" width="200" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="B78-DO-4PT"/>
+                                            <constraint firstAttribute="height" constant="200" id="abS-IJ-53h"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="geometric"/>
-                                        <connections>
-                                            <action selector="didTapUIImageButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i4P-k8-uzS"/>
-                                        </connections>
-                                    </button>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="kyC-EU-ADd"/>
@@ -58,6 +45,10 @@
                             <constraint firstItem="1xi-mD-km6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nyf-40-ntz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="assetImageView" destination="JZD-a7-hBH" id="bXs-78-oAv"/>
+                        <outlet property="networkImageView" destination="B3A-s0-8NC" id="S6a-Ka-m4b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,10 +56,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="geometric" width="200" height="200"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="asakusa" width="925" height="863"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

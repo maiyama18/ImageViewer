@@ -9,20 +9,43 @@ import SwiftUI
 import ImageViewer
 
 class ViewController: UIViewController {
+    @IBOutlet weak var assetImageView: UIImageView! {
+        didSet {
+            let recognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(didTapAssetImage(_:))
+            )
+            assetImageView.addGestureRecognizer(recognizer)
+        }
+    }
+    
+    @IBOutlet weak var networkImageView: UIImageView! {
+        didSet {
+            if let imageData = try? Data(contentsOf: URL(string: "https://picsum.photos/id/870/300/300")!) {
+                networkImageView.image = UIImage(data: imageData)
+            }
+            
+            let recognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(didTapNetworkImage(_:))
+            )
+            networkImageView.addGestureRecognizer(recognizer)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    @IBAction func didTapNetworkImageButton(_ sender: UIButton) {
+    @objc func didTapAssetImage(_ sender: UITapGestureRecognizer) {
         presentImageViewer(
-            url: URL(string: "https://picsum.photos/id/870/300/300"),
-            placeholder: { Color.gray }
+            dataSource: .uiImage(UIImage(named: "asakusa")!)
         )
     }
     
-    @IBAction func didTapUIImageButton(_ sender: UIButton) {
+    @objc func didTapNetworkImage(_ sender: UITapGestureRecognizer) {
         presentImageViewer(
-            image: UIImage(named: "geometric")!
+            dataSource: .url(URL(string: "https://picsum.photos/id/870/300/300"))
         )
     }
 }

@@ -1,30 +1,13 @@
 import SwiftUI
 
 extension UIViewController {
-    public func presentImageViewer<I: View>(image: () -> I) {
-        let imageViewerController = ImageViewerController(image: image)
-        present(imageViewerController: imageViewerController)
-    }
-    
-    public func presentImageViewer(image: UIImage) {
-        let imageViewerController = ImageViewerController(image: { Image(uiImage: image).resizable() })
-        present(imageViewerController: imageViewerController)
-    }
-    
-    @available(iOS 15.0, *)
-    public func presentImageViewer<P: View>(url: URL?, placeholder: @escaping () -> P) {
-        let imageViewerController = ImageViewerController(image: {
-            AsyncImage(url: url, content: { $0.resizable() }, placeholder: placeholder)
-        })
-        present(imageViewerController: imageViewerController)
-    }
-    
-    @available(iOS 15.0, *)
-    public func presentImageViewer(url: URL?, placeholder: UIImage) {
-        let imageViewerController = ImageViewerController(image: {
-            AsyncImage(url: url, content: { $0.resizable() }, placeholder: { Image(uiImage: placeholder).resizable() })
-        })
-        present(imageViewerController: imageViewerController)
+    public func presentImageViewer(dataSource: ImageDataSource) {
+        let imageViewerController = ImageViewerController(dataSource: dataSource)
+        
+        imageViewerController.view.backgroundColor = .clear
+        imageViewerController.modalTransitionStyle = .crossDissolve
+        imageViewerController.modalPresentationStyle = .overFullScreen
+        present(imageViewerController, animated: true)
     }
     
     func hostSwiftUIView<Content: View>(_ rootView: Content) {
@@ -34,12 +17,5 @@ extension UIViewController {
         view.addSubview(hostingVC.view)
         hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
         hostingVC.view.pinEdgesToSuperView()
-    }
-    
-    private func present<I: View>(imageViewerController: ImageViewerController<I>) {
-        imageViewerController.view.backgroundColor = .clear
-        imageViewerController.modalTransitionStyle = .crossDissolve
-        imageViewerController.modalPresentationStyle = .overFullScreen
-        present(imageViewerController, animated: true)
     }
 }

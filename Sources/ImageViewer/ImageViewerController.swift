@@ -1,10 +1,10 @@
 import SwiftUI
 
-public final class ImageViewerController<I: View>: UIViewController {
-    private let image: I
+public final class ImageViewerController: UIViewController {
+    private let dataSource: ImageDataSource
     
-    public init(image: () -> I) {
-        self.image = image()
+    public init(dataSource: ImageDataSource) {
+        self.dataSource = dataSource
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,7 +26,7 @@ public final class ImageViewerController<I: View>: UIViewController {
                         }
                     }
                 ),
-                image: image
+                dataSource: dataSource
             )
         )
     }

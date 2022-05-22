@@ -2,18 +2,18 @@ import SwiftUI
 import ImageViewer
 
 struct ContentView: View {
-    @State private var isImagePresented: Bool = false
-    @State private var isAsyncImagePresented: Bool = false
+    @State private var isAssetImagePresented: Bool = false
+    @State private var isNetworkImagePresented: Bool = false
     
     var body: some View {
         VStack(spacing: 24) {
             VStack(spacing: 4) {
-                Text("system image")
+                Text("asset image")
                     .bold()
-                image
+                Image(uiImage: UIImage(named: "asakusa")!).resizable()
                     .frame(width: 200, height: 200)
                     .onTapGesture {
-                        isImagePresented = true
+                        isAssetImagePresented = true
                     }
             }
             
@@ -27,29 +27,14 @@ struct ContentView: View {
                 )
                 .frame(width: 200, height: 200)
                 .onTapGesture {
-                    isAsyncImagePresented = true
+                    isNetworkImagePresented = true
                 }
             }
         }
-        .imageViewer(isPresented: $isImagePresented, image: image)
+        .imageViewer(isPresented: $isAssetImagePresented, dataSource: .uiImage(UIImage(named: "asakusa")!))
         .imageViewer(
-            isPresented: $isAsyncImagePresented,
-            url: URL(string: "https://picsum.photos/id/870/300/300"),
-            placeholder: {
-                Color.black
-                    .overlay(
-                        ProgressView().scaleEffect(5)
-                            .foregroundColor(.white)
-                    )
-            }
+            isPresented: $isNetworkImagePresented,
+            dataSource: .url(URL(string: "https://picsum.photos/id/870/300/300"))
         )
-    }
-    
-    private var image: some View {
-        Image(systemName: "sun.min")
-            .resizable()
-            .foregroundColor(.white)
-            .padding()
-            .background(Color.orange)
     }
 }
