@@ -1,6 +1,8 @@
 # ImageViewer
 
-Yet another simple image viewer for iOS Application, that is available for both UIKit and SwiftUI. 
+Yet another simple image viewer for iOS Applications, that is available for both UIKit and SwiftUI.
+
+![image_viewer](https://user-images.githubusercontent.com/22269397/169675704-a5f4001b-01e2-4109-b3a1-1dcdb42de845.gif)
 
 ## Installation
 
@@ -13,6 +15,8 @@ https://github.com/maiyama18/ImageViewer.git
 ## Usage
 
 ### From UIKit
+
+[Example project](https://github.com/maiyama18/ImageViewer/tree/main/Examples/ImageViewerSwiftUIExample/ImageViewerSwiftUIExample)
 
 ```swift
 final class ViewController: UIViewController {
@@ -36,6 +40,8 @@ final class ViewController: UIViewController {
 ### From SwiftUI
 
 **The use from SwiftUI is currently unstable and sometimes not working correctly.**
+
+[Example project](https://github.com/maiyama18/ImageViewer/tree/main/Examples/ImageViewerSwiftUIExample)
 
 ```swift
 struct ContentView: View {
