@@ -10,8 +10,9 @@ extension UIViewController {
         present(imageViewerController, animated: true)
     }
     
-    func hostSwiftUIView<Content: View>(_ rootView: Content) {
+    func hostSwiftUIView<Content: View>(_ rootView: Content, hostingViewBackgroundColor: UIColor = .systemBackground) {
         let hostingVC = UIHostingController(rootView: rootView)
+        hostingVC.view.backgroundColor = hostingViewBackgroundColor
         addChild(hostingVC)
         hostingVC.didMove(toParent: self)
         view.addSubview(hostingVC.view)

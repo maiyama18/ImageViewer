@@ -4,6 +4,7 @@ import Combine
 struct ScrollableImageView: UIViewRepresentable {
     var dataSource: ImageDataSource
     var onCloseConditionSatisfied: () -> Void
+    var onOffsetToThresholdRatioChanged: (Double) -> Void
     var imageChangedPublisher: AnyPublisher<Void, Never>
     
     @State var scrollView: UIScrollView?
@@ -23,7 +24,7 @@ struct ScrollableImageView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         let scrollView = UIScrollView()
         
-        scrollView.backgroundColor = .black
+        scrollView.backgroundColor = .clear
         scrollView.maximumZoomScale = 12
         scrollView.minimumZoomScale = 1
         scrollView.alwaysBounceVertical = true
@@ -54,7 +55,13 @@ struct ScrollableImageView: UIViewRepresentable {
         imageView.translatesAutoresizingMaskIntoConstraints = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        return Coordinator(scrollView: scrollView, imageView: imageView, imageChangedPublisher: imageChangedPublisher, onCloseConditionSatisfied: onCloseConditionSatisfied)
+        return Coordinator(
+            scrollView: scrollView,
+            imageView: imageView,
+            imageChangedPublisher: imageChangedPublisher,
+            onCloseConditionSatisfied: onCloseConditionSatisfied,
+            onOffsetToThresholdRatioChanged: onOffsetToThresholdRatioChanged
+        )
     }
 
     func updateUIView(_: UIScrollView, context _: Context) {}
@@ -63,13 +70,21 @@ struct ScrollableImageView: UIViewRepresentable {
         var scrollView: UIScrollView
         var imageView: UIImageView
         var onCloseConditionSatisfied: () -> Void
+        var onOffsetToThresholdRatioChanged: (Double) -> Void
     
         private var cancellables: [AnyCancellable] = []
 
-        init(scrollView: UIScrollView, imageView: UIImageView, imageChangedPublisher: AnyPublisher<Void, Never>, onCloseConditionSatisfied: @escaping () -> Void) {
+        init(
+            scrollView: UIScrollView,
+            imageView: UIImageView,
+            imageChangedPublisher: AnyPublisher<Void, Never>,
+            onCloseConditionSatisfied: @escaping () -> Void,
+            onOffsetToThresholdRatioChanged: @escaping (Double) -> Void
+        ) {
             self.scrollView = scrollView
             self.imageView = imageView
             self.onCloseConditionSatisfied = onCloseConditionSatisfied
+            self.onOffsetToThresholdRatioChanged = onOffsetToThresholdRatioChanged
             
             imageChangedPublisher
                 .receive(on: DispatchQueue.main)
@@ -107,8 +122,7 @@ struct ScrollableImageView: UIViewRepresentable {
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             guard scrollView.zoomScale == 1 else { return }
             let scrollOffset = abs(scrollView.contentOffset.y)
-            let alpha = max(0, 1 - (scrollOffset / 300))
-            scrollView.backgroundColor = .black.withAlphaComponent(alpha)
+            onOffsetToThresholdRatioChanged(scrollOffset / 120)
         }
         
         func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

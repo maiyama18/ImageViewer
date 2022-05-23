@@ -12,7 +12,10 @@ struct ImageViewer: View {
         self.initialIndex = initialIndex
     }
     
+    @State private var backgroundOpacity: CGFloat = 1
+    
     @State private var currentDataSourceID: String = ""
+    
     @State private var isShareViewPresented: Bool = false
     @State private var shareItems: [Any] = []
     
@@ -32,6 +35,9 @@ struct ImageViewer: View {
                                             isPresented = false
                                         }
                                     },
+                                    onOffsetToThresholdRatioChanged: { ratio in
+                                        backgroundOpacity = max(0, 1 - 0.3 * ratio)
+                                    },
                                     imageChangedPublisher: imageChangedSubject.eraseToAnyPublisher()
                                 )
                                 .tag(dataSource.id)
@@ -39,7 +45,7 @@ struct ImageViewer: View {
                         }
                         .tabViewStyle(.page(indexDisplayMode: .automatic))
                     }
-                    .background(Color.black)
+                    .background(Color.black.opacity(backgroundOpacity))
                     .ignoresSafeArea()
                     
                     HStack {

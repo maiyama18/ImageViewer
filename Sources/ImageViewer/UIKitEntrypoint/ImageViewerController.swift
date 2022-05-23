@@ -30,7 +30,8 @@ public final class ImageViewerController: UIViewController {
                 ),
                 dataSources: dataSources,
                 initialIndex: initialIndex
-            )
+            ),
+            hostingViewBackgroundColor: .clear
         )
     }
 }
