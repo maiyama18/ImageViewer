@@ -4,14 +4,15 @@ import Combine
 struct ImageViewer: View {
     @Binding var isPresented: Bool
     var dataSources: [ImageDataSource]
+    var initialIndex: Int
     
     init(isPresented: Binding<Bool>, dataSources: [ImageDataSource], initialIndex: Int) {
         self._isPresented = isPresented
         self.dataSources = dataSources
-        _currentDataSourceID = .init(initialValue: dataSources[initialIndex].id)
+        self.initialIndex = initialIndex
     }
     
-    @State private var currentDataSourceID: String
+    @State private var currentDataSourceID: String = ""
     @State private var isShareViewPresented: Bool = false
     @State private var shareItems: [Any] = []
     
@@ -85,6 +86,9 @@ struct ImageViewer: View {
         }
         .sheet(isPresented: $isShareViewPresented) {
             ShareView(items: shareItems)
+        }
+        .onAppear {
+            currentDataSourceID = dataSources[initialIndex].id
         }
     }
 }
