@@ -16,7 +16,7 @@ struct ImageViewer: View {
     @State private var isShareViewPresented: Bool = false
     @State private var shareItems: [Any] = []
     
-    private let disappearedRelay: PassthroughSubject<Void, Never> = .init()
+    private let imageChangedSubject: PassthroughSubject<Void, Never> = .init()
     
     var body: some View {
         Group {
@@ -32,12 +32,9 @@ struct ImageViewer: View {
                                             isPresented = false
                                         }
                                     },
-                                    disappeared: disappearedRelay.eraseToAnyPublisher()
+                                    imageChangedPublisher: imageChangedSubject.eraseToAnyPublisher()
                                 )
                                 .tag(dataSource.id)
-                                .onDisappear {
-                                    disappearedRelay.send(())
-                                }
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .automatic))
@@ -89,6 +86,9 @@ struct ImageViewer: View {
         }
         .onAppear {
             currentDataSourceID = dataSources[initialIndex].id
+        }
+        .onChange(of: currentDataSourceID) { id in
+            imageChangedSubject.send(())
         }
     }
 }

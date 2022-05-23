@@ -4,7 +4,7 @@ import Combine
 struct ScrollableImageView: UIViewRepresentable {
     var dataSource: ImageDataSource
     var onCloseConditionSatisfied: () -> Void
-    var disappeared: AnyPublisher<Void, Never>
+    var imageChangedPublisher: AnyPublisher<Void, Never>
     
     @State var scrollView: UIScrollView?
 
@@ -54,7 +54,7 @@ struct ScrollableImageView: UIViewRepresentable {
         imageView.translatesAutoresizingMaskIntoConstraints = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        return Coordinator(scrollView: scrollView, imageView: imageView, disappeared: disappeared, onCloseConditionSatisfied: onCloseConditionSatisfied)
+        return Coordinator(scrollView: scrollView, imageView: imageView, imageChangedPublisher: imageChangedPublisher, onCloseConditionSatisfied: onCloseConditionSatisfied)
     }
 
     func updateUIView(_: UIScrollView, context _: Context) {}
@@ -66,15 +66,17 @@ struct ScrollableImageView: UIViewRepresentable {
     
         private var cancellables: [AnyCancellable] = []
 
-        init(scrollView: UIScrollView, imageView: UIImageView, disappeared: AnyPublisher<Void, Never>, onCloseConditionSatisfied: @escaping () -> Void) {
+        init(scrollView: UIScrollView, imageView: UIImageView, imageChangedPublisher: AnyPublisher<Void, Never>, onCloseConditionSatisfied: @escaping () -> Void) {
             self.scrollView = scrollView
             self.imageView = imageView
             self.onCloseConditionSatisfied = onCloseConditionSatisfied
             
-            disappeared
+            imageChangedPublisher
                 .receive(on: DispatchQueue.main)
                 .sink {
-                    scrollView.zoomScale = 1
+                    UIView.animate(withDuration: 0.3) {
+                        scrollView.zoomScale = 1
+                    }
                 }
                 .store(in: &cancellables)
         }
