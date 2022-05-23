@@ -31,7 +31,7 @@ struct ImageViewer: View {
                                 ScrollableImageView(
                                     dataSource: dataSource,
                                     onCloseConditionSatisfied: {
-                                        withAnimation(.linear(duration: 0.5).delay(0.1)) {
+                                        withAnimation(.linear(duration: 0.2)) {
                                             isPresented = false
                                         }
                                     },
