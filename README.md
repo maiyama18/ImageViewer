@@ -1,7 +1,8 @@
 # ImageViewer
 
-Yet another simple image viewer for iOS Applications available for both UIKit and SwiftUI.
+Yet another simple image viewer for iOS Applications.
 
+![ImageViewer](https://user-images.githubusercontent.com/22269397/169911938-d1011ab1-72b3-4391-a180-8bec750837ea.gif)
 
 ## Installation
 
